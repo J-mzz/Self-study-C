@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string removeOuterParentheses(string S) {
+        int count=0;
+        int i_init=0;
+        string result,memo;
+        for(int i=i_init;i<S.size();i++){
+            if(S[i]=='(')
+                count++;
+            else if(S[i]==')')
+                count--;
+            if(count==0){
+                memo =S.substr(i_init+1,i-i_init-1);
+                result = result + memo;
+                i_init=i+1;
+                count =0;
+            }
+        }
+        return result;
+    }
+};
+
+//Runtime: 36 ms, faster than 7.17% of C++ online submissions for Remove Outermost Parentheses.
+//Memory Usage: 70.8 MB, less than 100.00% of C++ online submissions for Remove Outermost Parentheses.
+
+String变量直接相加就好，学习下substr的知识，对于String变量尽量不适用strcat，貌似这个主要针对char。
