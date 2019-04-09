@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int hammingDistance(int x, int y) {
+        int n=x^y;
+        int count=0;
+        while(n!=0){
+            n = n&(n-1);
+            count++;
+        }
+        return count;
+    }
+};
+
+//Hamming Distance是指二进制表达中有多少位不相同，因此即为求亦或并数其中1的个数
+//注意此处循环的condition不能是!n，因为n不是BIT所以不能简单的用!n作为条件
