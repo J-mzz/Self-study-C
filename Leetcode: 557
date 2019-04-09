@@ -1,0 +1,26 @@
+Solution 1:
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        string memo;
+        string rev;
+        for(int i=0;i<s.size();i++){
+            if(s[i]!=' '){
+                memo = s[i]+memo;
+                continue;
+            }
+            rev = rev+memo+' ';
+            memo.clear();
+        }
+        rev = rev+memo;
+        return rev;
+    }
+};
+
+//最后一个memo叠加到rev的过程会被continue之后终止，所以需要在循环结束后补上，同时注意最后一个memo后不接空格
+//字符串末尾的' '会被自动省略，所以不需要pop_back()额外处理
+//这种方法Time和Memo都很低
+
+Solution 2
+//考虑使用reverse()或者strrev()，并且直接在s上进行操作，可以减少time和memo
