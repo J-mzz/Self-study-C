@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int reverse(int x) {
+        long long result=0;
+        while(x){
+            result = result*10 + x%10;
+            x/=10;
+        }
+        return (result<INT_MIN ||result>INT_MAX)?0:result;
+    }
+};
+
+//注意溢出，result定义为longlong，判断溢出用INT_MIN和INT_MAX快速判断
