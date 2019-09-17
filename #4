@@ -1,0 +1,39 @@
+class Solution {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        int target = nums1.size() + nums2.size();
+        int prev = 0;
+        
+        while(){
+            int n = 0;
+            int x = INT_MAX;
+            int y = INT_MAX;
+            
+            if(i < nums1.size()) x = nums1[i];          //x,y serve as 2 pointers
+            if(y < nums2.size()) y = nums2[j];          //
+            
+            if(x == INT_MAX && y == INT_MAX) break;     //prevent overflow
+            
+            if(x < y){
+                n = x;
+                i++;
+            }
+            else{
+                n = y;
+                j++;
+            }
+            
+            if(count == target/2){                      //count++ is behind this step because target may be odd
+                if(target%2)
+                    return (double)(prev + n)/2;
+                else
+                    return n;
+            }
+            prev = n;
+            count++;            
+        }            
+    }
+};
