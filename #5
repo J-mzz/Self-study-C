@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if(s.size() == 0 || s.size() == 1) return s;                              //edge cases
+        
+        int maxLenBeginIndex = 0;
+        int maxLen = 1;
+        int mid = 0;
+        
+        while(mid < s.size()){
+            int midBegin = mid;
+            int midEnd = mid;
+            
+            while(midEnd+1 < s.size() && s[midEnd] == s[midEnd+1]) midEnd++;      //try to expand the window (from mid)
+            
+            mid = midEnd+1;
+            
+            int leftWindow = midBegin;
+            int rightWindow = midEnd;
+            
+            while(leftWindow-1 >= 0 && rightWindow+1 <= s.size() && s[rightWindow-1] == s[leftWindow+1]){   //expand from both sides
+                leftWindow++;
+                rightWindow--;
+            }
+            
+            int currentLen = rightWindow - leftWindow + 1;
+            if(currentLen > maxlen){
+                maxLenBeginIndex = leftWindow;
+                maxLen = currentLen;
+            }
+        }
+        
+        return s.substr(maxLenBeginIndex, maxLen);
+    }
+};
