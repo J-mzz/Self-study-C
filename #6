@@ -1,0 +1,15 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        
+        if(numRows == 1) return s;
+        
+        string ans = "";
+        int c = (numRows-1) * 2;
+        for(int i=0;i<numsRows;i++)
+            for(int j=0;j<s.size();j++)
+                if(j%c == i || j%c == c-i)          //there is a rule can be easily finded
+                    and += s[j];
+        return ans;
+    }
+};
