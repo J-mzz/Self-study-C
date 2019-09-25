@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int reverse(int x) {
+        long revnums = 0;
+//wrong     if(x>INT_MAX) return 0;                 //Here is an error, the x is given, and what you need to do
+        while(x != 0){                              //is to prevent revnums overflowing, and when doing this
+            revnums = 10*revnums + x%10;            //plz note that if revnums is too small or too big, so abs(~)
+            x = x/10;
+            if(abs(revnums)>INT_MAX) return 0;      //this is right
+        }
+        return revnums;
+    }
+};
