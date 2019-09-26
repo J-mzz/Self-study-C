@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int i = 0, j = height.size()-1;
+        int ans = 0;
+        
+        while(i<j){
+            ans = max(ans,(j-i)*min(height[i],height[j]));    //With 2 pointers moving closer, if want bigger rectanglar
+            height[i] > height[j] ? j-- : i++;                //the possible position is the relative shorter height increases 
+        }
+        
+        return ans;
+    }
+};
